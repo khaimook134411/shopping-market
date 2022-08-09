@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+.containerProduct {
+  width: 70vw;
+  height: fit-content;
+  background-color: aquamarine;
+}
+.containerBasket {
+  width: 30vw;
+  background-color: yellow;
+}

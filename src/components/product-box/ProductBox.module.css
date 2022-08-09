@@ -1,0 +1,34 @@
+.container {
+  background-color: rgb(255, 255, 255);
+  width: 30vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.picture {
+  width: 100%;
+  background-color: rgb(249, 238, 197);
+}
+
+.picture img {
+  width: 100%;
+}
+
+.detail {
+  padding: 1vw;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.basket {
+  width: 90%;
+  padding: 1vw 0vw;
+  margin-bottom: 2vw;
+  background-color: rgb(166, 198, 235);
+  border-radius: 2px;
+}

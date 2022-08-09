@@ -1,9 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
+import { Provider } from "react-redux";
 import "./App.css";
+import Home from "./pages/home/Home";
+import { store } from "./store/store";
 
 function App() {
-  return <div className="App">eiei</div>;
+  return (
+    <div className="App">
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    </div>
+  );
 }
 
 export default App;
