@@ -2,6 +2,7 @@ import React from "react";
 // import { useSelector } from "react-redux";
 import DataList from "../../components/data-list/DataList";
 import ProductBox from "../../components/product-box/ProductBox";
+import ProductButton from "../../components/product-button/ProductButton";
 import { increase } from "../../store/basketStore";
 // import { rootType } from "../../store/rootReducer";
 import { store } from "../../store/store";
@@ -31,12 +32,53 @@ function Home() {
       description: "strawberry",
       imgUrl:
         "https://i.pinimg.com/originals/28/3e/53/283e53880ea4fd483c4968d89b143866.png",
-      price: 10,
+      price: 100,
+    },
+    {
+      description: "watermelon",
+      imgUrl:
+        "https://www.pngall.com/wp-content/uploads/2016/04/Watermelon-Free-Download-PNG.png",
+      price: 80,
+    },
+    {
+      description: "cherry",
+      imgUrl:
+        "https://www.pngplay.com/wp-content/uploads/6/Aesthetic-Cherry-Transparent-PNG.png",
+      price: 80,
+    },
+    {
+      description: "kiwi",
+      imgUrl:
+        "https://www.pngall.com/wp-content/uploads/2016/04/Kiwi-PNG-File.png",
+      price: 80,
+    },
+    {
+      description: "grape",
+      imgUrl:
+        "https://www.padasopus.com/wp-content/uploads/2017/07/Grape-PNG.png",
+      price: 80,
+    },
+    {
+      description: "pineapple",
+      imgUrl:
+        "https://i.pinimg.com/originals/30/a3/f8/30a3f885fa5b26244d1f8819a94869b5.png",
+      price: 80,
+    },
+    {
+      description: "blueberry",
+      imgUrl:
+        "https://i.pinimg.com/originals/91/25/b2/9125b2471bb9514dd03f878f05ece4f4.png",
+      price: 80,
     },
   ];
 
   const img = data.map((element, index) => {
-    return <ProductBox {...element} key={index} />;
+    return (
+      <div>
+        <ProductBox {...element} key={index} />
+        <ProductButton />
+      </div>
+    );
   });
   return (
     <div>
@@ -44,7 +86,7 @@ function Home() {
       <div className={style.container}>
         <div className={style.containerProduct}>
           All products
-          {img}
+          <div className={style.image}>{img}</div>
         </div>
         <div className={style.containerBasket}>
           Basket List

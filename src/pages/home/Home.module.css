@@ -10,3 +10,8 @@
   width: 30vw;
   background-color: yellow;
 }
+
+.image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
