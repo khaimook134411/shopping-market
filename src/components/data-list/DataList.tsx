@@ -27,7 +27,11 @@ function DataList(props: DataListProp) {
         >
           -
         </button>{" "} */}
-        <div className={style.item}>{state.join("\n")}</div>{" "}
+        <div className={style.item}>
+          {state.map((value, index) => {
+            return <div>{value}</div>;
+          })}
+        </div>{" "}
         {/* <button 
           onClick={() => {
             store.dispatch(increase());

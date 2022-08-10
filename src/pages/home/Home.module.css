@@ -2,17 +2,27 @@
   display: flex;
 }
 
+h3 {
+}
+
 h3 img {
   width: 10vw;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 .containerProduct {
   width: 65vw;
-  height: fit-content;
+  height: 100vh;
   background-color: aquamarine;
+  overflow-y: scroll;
 }
 .containerBasket {
   width: 35vw;
   background-color: yellow;
+  position: fixed;
+  right: 0;
+  height: 100vh;
 }
 
 .image {
