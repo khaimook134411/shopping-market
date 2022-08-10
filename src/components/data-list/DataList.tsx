@@ -3,38 +3,40 @@ import { useSelector } from "react-redux";
 import { decrease, increase } from "../../store/basketStore";
 import { rootType } from "../../store/rootReducer";
 import { store } from "../../store/store";
+import style from "./DataList.module.css";
 
-// interface checkedListProps {
-//   checkedList: {
-//     id: string;
-//     name: string;
-//     description: string;
-//     checked: boolean;
-//   };
-// }
-function DataList() {
+interface DataListProp {
+  description: string;
+  price: number;
+}
+
+function DataList(props: DataListProp) {
   const state = useSelector((state: rootType) => {
-    return state.countItem;
+    return state.countItem.items;
   });
+  // const data = store.getState().countItem.items;
+  // const [item, setItem] = useState(data);
+
   return (
-    <div>
-      {/* <span>{props.checkedList.name}</span> */}
-      <span>apple</span>
-      <button
-        onClick={() => {
-          store.dispatch(decrease());
-        }}
-      >
-        -
-      </button>
-      {state.countItem}
-      <button
-        onClick={() => {
-          store.dispatch(increase());
-        }}
-      >
-        +
-      </button>
+    <div className={style.container}>
+      <div>
+        {/* <button
+          onClick={() => {
+            store.dispatch(decrease());
+          }}
+        >
+          -
+        </button>{" "} */}
+        <div className={style.item}>{state.join("\n")}</div>{" "}
+        {/* <button 
+          onClick={() => {
+            store.dispatch(increase());
+          }}
+        >
+          +
+        </button> */}
+        <div></div>
+      </div>
     </div>
   );
 }

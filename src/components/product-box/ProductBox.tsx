@@ -3,11 +3,15 @@ import style from "./ProductBox.module.css";
 
 interface ProductBoxProp {
   imgUrl: string;
-  description: string;
+  name: string;
   price: number;
-  // onClick: () => void;
+  action: (item: string) => void;
 }
 function ProductBox(props: ProductBoxProp) {
+  const item = props.name;
+  // const AddItem: (item: string) => void = (item: string) =>
+  //   store.dispatch(addItem({ name: item }));
+
   return (
     <>
       <div className={style.container}>
@@ -15,12 +19,17 @@ function ProductBox(props: ProductBoxProp) {
           <img alt="" src={props.imgUrl} />
         </div>
         <div className={style.detail}>
-          <div>{props.description}</div>
+          <div>{props.name}</div>
           <div className={style.price}>{props.price}</div>
         </div>
-        {/* <div className={style.basket} onClick={props.onClick}>
-          basket
-        </div> */}
+      </div>
+      <div
+        className={style.addButton}
+        onClick={() => {
+          props.action(item);
+        }}
+      >
+        Add to basket +
       </div>
     </>
   );

@@ -1,17 +1,27 @@
 .container {
   display: flex;
 }
+
+h3 img {
+  width: 10vw;
+}
 .containerProduct {
-  width: 70vw;
+  width: 65vw;
   height: fit-content;
   background-color: aquamarine;
 }
 .containerBasket {
-  width: 30vw;
+  width: 35vw;
   background-color: yellow;
 }
 
 .image {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
