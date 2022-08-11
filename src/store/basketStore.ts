@@ -1,19 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type listItems = {
+export interface Items {
+  name: string;
+  price: number;
   countItem: number;
-  // items: [
-  //   {
-  //     description: string;
-  //     price: number;
-  //   }
-  // ];
-  items: string[];
+}
+export type listItems = {
+  count: number;
+  items: Items[];
 };
 
 const initialState: listItems = {
-  countItem: 0,
-  // items: [{ description: "", price: 0 }],
+  count: 0,
   items: [],
 };
 export const basketStore = createSlice({
@@ -21,38 +19,67 @@ export const basketStore = createSlice({
   initialState: initialState,
   reducers: {
     increase: (state) => {
-      return { ...state, countItem: state.countItem + 1 };
+      return { ...state, count: state.count + 1 };
     },
     decrease: (state) => {
-      return { ...state, countItem: state.countItem - 1 };
+      return { ...state, count: state.count - 1 };
     },
-    // setItem: (
-    //   state,
-    //   action: PayloadAction<{ description: string; price: number }>
-    // ) => {
-    //   return {
-    //     ...state,
-    //     countItem: state.countItem + 1,
-    //     items: {
-    //       description: action.payload.description,
-    //       price: action.payload.price,
-    //     },
-    //   };
-    // },
-    addItem: (state, action: PayloadAction<{ name: string }>) => {
-      return {
-        ...state,
-        countItem: state.countItem + 1,
-        items: [
-          ...state.items,
-          // {
-          //   description: action.payload.description,
-          //   price: action.payload.price,
-          // },
-          action.payload.name,
-        ],
-      };
+    delItem: (
+      state,
+      action: PayloadAction<{ name: string; price: number }>
+    ) => {
+      if (
+        state.items.filter((value) => {
+          return value.name === action.payload.name;
+        }).length
+      ) {
+        var items = state.items.map((item) => item.name);
+        let index = items.indexOf(action.payload.name);
+        state.items[index].countItem -= 1;
+        do {
+          state.items[index].price -= action.payload.price;
+        } while (state.items[index].countItem === 0);
+      } else {
+        return {
+          ...state,
+          items: [
+            ...state.items,
+            {
+              name: action.payload.name,
+              price: action.payload.price,
+              countItem: 1,
+            },
+          ],
+        };
+      }
+    },
+    addItem: (
+      state,
+      action: PayloadAction<{ name: string; price: number }>
+    ) => {
+      if (
+        state.items.filter((value) => {
+          return value.name === action.payload.name;
+        }).length
+      ) {
+        var items = state.items.map((item) => item.name);
+        let index = items.indexOf(action.payload.name);
+        state.items[index].countItem += 1;
+        state.items[index].price += action.payload.price;
+      } else {
+        return {
+          ...state,
+          items: [
+            ...state.items,
+            {
+              name: action.payload.name,
+              price: action.payload.price,
+              countItem: 1,
+            },
+          ],
+        };
+      }
     },
   },
 });
-export const { increase, decrease, addItem } = basketStore.actions;
+export const { increase, decrease, delItem, addItem } = basketStore.actions;

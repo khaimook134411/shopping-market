@@ -5,21 +5,16 @@ import { rootType } from "../../store/rootReducer";
 import { store } from "../../store/store";
 import style from "./DataList.module.css";
 
-interface DataListProp {
-  description: string;
-  price: number;
-}
-
-function DataList(props: DataListProp) {
+function DataList() {
   const state = useSelector((state: rootType) => {
-    return state.countItem.items;
+    return state.basket.items;
   });
-  // const data = store.getState().countItem.items;
-  // const [item, setItem] = useState(data);
+  console.log(state);
 
   return (
     <div className={style.container}>
       <div>
+        eie
         {/* <button
           onClick={() => {
             store.dispatch(decrease());
@@ -27,11 +22,11 @@ function DataList(props: DataListProp) {
         >
           -
         </button>{" "} */}
-        <div className={style.item}>
+        {/* <div className={style.item}>
           {state.map((value, index) => {
-            return <div>{value}</div>;
+            return <div>{{ name: value.name, price: value.price }}</div>;
           })}
-        </div>{" "}
+        </div>{" "} */}
         {/* <button 
           onClick={() => {
             store.dispatch(increase());
@@ -39,7 +34,6 @@ function DataList(props: DataListProp) {
         >
           +
         </button> */}
-        <div></div>
       </div>
     </div>
   );

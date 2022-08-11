@@ -1,6 +1,6 @@
 .container {
   background-color: rgb(255, 255, 255);
-  width: 30vw;
+  width: 25vw;
   height: fit-content;
   display: flex;
   flex-direction: column;

@@ -5,10 +5,13 @@ interface ProductBoxProp {
   imgUrl: string;
   name: string;
   price: number;
-  action: (item: string) => void;
+  index: number;
+  action: (name: string, price: number) => void;
 }
 function ProductBox(props: ProductBoxProp) {
-  const item = props.name;
+  const name = props.name;
+  const price = props.price;
+  const index = props.index;
   // const AddItem: (item: string) => void = (item: string) =>
   //   store.dispatch(addItem({ name: item }));
 
@@ -26,7 +29,7 @@ function ProductBox(props: ProductBoxProp) {
       <div
         className={style.addButton}
         onClick={() => {
-          props.action(item);
+          props.action(name, price);
         }}
       >
         Add to basket +

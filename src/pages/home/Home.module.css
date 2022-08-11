@@ -1,31 +1,37 @@
+.header {
+  width: 100vw;
+  height: fit-content;
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+}
+
+.header img {
+  width: 10vw;
+}
+
 .container {
   display: flex;
+  padding-top: 10vw;
 }
 
-h3 {
-}
-
-h3 img {
-  width: 10vw;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
 .containerProduct {
-  width: 65vw;
-  height: 100vh;
+  position: fixed;
+  z-index: 0;
+  width: 60vw;
+  height: 90vh;
   background-color: aquamarine;
   overflow-y: scroll;
 }
 .containerBasket {
-  width: 35vw;
+  width: 40vw;
   background-color: yellow;
   position: fixed;
   right: 0;
   height: 100vh;
 }
 
-.image {
+.mapData {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -34,4 +40,9 @@ h3 img {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.dataList {
+  display: flex;
+  margin: 2vw;
+  gap: 2vw;
 }
