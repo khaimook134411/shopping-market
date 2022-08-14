@@ -4,6 +4,10 @@
   position: fixed;
   z-index: 999;
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: large;
+  font-weight: 500;
 }
 
 .header img {
@@ -12,7 +16,7 @@
 
 .container {
   display: flex;
-  padding-top: 10vw;
+  padding-top: 8vw;
 }
 
 .containerProduct {
@@ -20,15 +24,25 @@
   z-index: 0;
   width: 60vw;
   height: 90vh;
-  background-color: aquamarine;
+  padding: 2vw 0;
+  background-color: rgb(192, 226, 247);
   overflow-y: scroll;
 }
+
 .containerBasket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 40vw;
-  background-color: yellow;
+  background-color: rgb(232, 232, 229);
   position: fixed;
   right: 0;
   height: 100vh;
+}
+
+.basketList {
+  padding: 3vw 0 2vw 0;
+  color: rgb(193, 102, 102);
 }
 
 .mapData {
@@ -41,8 +55,44 @@
   flex-direction: column;
   align-items: center;
 }
+
 .dataList {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr 1fr 4fr;
+  text-align: left;
+  margin: 2vw 0;
+}
+
+.dataList button {
+  text-decoration: none;
+  background-color: rgb(224, 235, 242);
+  color: rgb(33, 77, 106);
+  border: 2px solid rgb(192, 226, 247);
+  border-radius: 8px;
+}
+
+.dataList button:hover {
+  cursor: pointer;
+}
+
+.text {
+  padding-left: 1vw;
+  color: gray;
+}
+
+.count {
+  text-align: center;
+  color: rgb(33, 77, 106);
+}
+
+.total {
+  width: 20vw;
+  position: absolute;
+  bottom: 20vw;
+  padding: 1vw;
+  background-color: rgb(224, 209, 209);
+  border: 2px solid rgb(193, 102, 102);
+  border-radius: 2px;
   display: flex;
-  margin: 2vw;
-  gap: 2vw;
+  justify-content: space-evenly;
 }

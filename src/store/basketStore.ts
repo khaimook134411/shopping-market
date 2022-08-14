@@ -35,10 +35,15 @@ export const basketStore = createSlice({
       ) {
         var items = state.items.map((item) => item.name);
         let index = items.indexOf(action.payload.name);
-        state.items[index].countItem -= 1;
-        do {
+
+        if (state.items[index].countItem === 1) {
+          //TO DO ทำให้ list นี้หายไป
+          state.items = initialState.items;
+        } else {
+          state.items[index].countItem -= 1;
           state.items[index].price -= action.payload.price;
-        } while (state.items[index].countItem === 0);
+          // console.log(action.payload.price);
+        }
       } else {
         return {
           ...state,

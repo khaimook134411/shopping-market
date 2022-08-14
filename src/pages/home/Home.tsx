@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import DataList from "../../components/data-list/DataList";
+// import DataList from "../../components/data-list/DataList";
 import ProductBox from "../../components/product-box/ProductBox";
 import { addItem, delItem } from "../../store/basketStore";
 import { rootType } from "../../store/rootReducer";
@@ -102,48 +102,55 @@ function Home() {
 
       <div className={style.container}>
         <div className={style.containerProduct}>
-          All products
+          {/* All products */}
           <div className={style.mapData}>{mapData}</div>
         </div>
         <div className={style.containerBasket}>
-          Basket List
+          <div className={style.basketList}> Basket List</div>
+
           <div>
             {state.items.map((val, index) => {
               return (
-                <div>
-                  <div className={style.dataList}>
-                    <div>{val.name}</div>
-                    <button
-                      onClick={() =>
-                        store.dispatch(
-                          delItem({ name: val.name, price: val.price })
-                        )
-                      }
-                    >
-                      -{" "}
-                    </button>{" "}
-                    <div>{state.items[index].countItem}</div>
-                    <button
-                      onClick={() =>
-                        store.dispatch(
-                          addItem({ name: val.name, price: val.price })
-                        )
-                      }
-                    >
-                      {" "}
-                      +
-                    </button>{" "}
-                    <div>{val.price} baht</div>
+                <div className={style.dataList}>
+                  <div className={style.text}>{val.name}</div>
+                  <button
+                    onClick={() =>
+                      store.dispatch(
+                        delItem({
+                          name: val.name,
+                          price: val.price / val.countItem,
+                        })
+                      )
+                    }
+                  >
+                    -
+                  </button>
+                  <div className={style.count}>
+                    {state.items[index].countItem}
                   </div>
+                  <button
+                    onClick={() =>
+                      store.dispatch(
+                        addItem({
+                          name: val.name,
+                          price: val.price / val.countItem,
+                        })
+                      )
+                    }
+                  >
+                    {" "}
+                    +
+                  </button>{" "}
+                  <div className={style.text}>{val.price} baht</div>
                 </div>
               );
             })}
           </div>
-          total
-          {state.items.reduce(
-            (pre, next) => pre + next.price * next.countItem,
-            0
-          )}
+
+          <div className={style.total}>
+            <div>total</div>
+            <div>{state.items.reduce((pre, next) => pre + next.price, 0)}</div>
+          </div>
         </div>
       </div>
     </div>
