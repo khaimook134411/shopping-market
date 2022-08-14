@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import DataList from "../../components/data-list/DataList";
 import ProductBox from "../../components/product-box/ProductBox";
 import { addItem, delItem } from "../../store/basketStore";
 import { rootType } from "../../store/rootReducer";

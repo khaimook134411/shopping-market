@@ -9,11 +9,9 @@ interface ProductBoxProp {
   action: (name: string, price: number) => void;
 }
 function ProductBox(props: ProductBoxProp) {
-  const name = props.name;
-  const price = props.price;
-  const index = props.index;
-  // const AddItem: (item: string) => void = (item: string) =>
-  //   store.dispatch(addItem({ name: item }));
+  const { name, price } = props;
+  // const name = props.name;
+  // const price = props.price;
 
   return (
     <>

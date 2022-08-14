@@ -1,8 +1,0 @@
-.container {
-  display: flex;
-  justify-content: space-between;
-}
-.item {
-  display: flex;
-  flex-direction: column;
-}

@@ -6,24 +6,17 @@ export interface Items {
   countItem: number;
 }
 export type listItems = {
-  count: number;
   items: Items[];
 };
 
 const initialState: listItems = {
-  count: 0,
   items: [],
 };
 export const basketStore = createSlice({
   name: "basket",
   initialState: initialState,
   reducers: {
-    increase: (state) => {
-      return { ...state, count: state.count + 1 };
-    },
-    decrease: (state) => {
-      return { ...state, count: state.count - 1 };
-    },
+    //TO DO action reset
     delItem: (
       state,
       action: PayloadAction<{ name: string; price: number }>
@@ -37,12 +30,12 @@ export const basketStore = createSlice({
         let index = items.indexOf(action.payload.name);
 
         if (state.items[index].countItem === 1) {
-          //TO DO ทำให้ list นี้หายไป
-          state.items = initialState.items;
+          state.items = state.items.filter((item, index) => {
+            return item.name !== action.payload.name;
+          });
         } else {
           state.items[index].countItem -= 1;
           state.items[index].price -= action.payload.price;
-          // console.log(action.payload.price);
         }
       } else {
         return {
@@ -87,4 +80,4 @@ export const basketStore = createSlice({
     },
   },
 });
-export const { increase, decrease, delItem, addItem } = basketStore.actions;
+export const { delItem, addItem } = basketStore.actions;
