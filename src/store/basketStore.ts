@@ -16,7 +16,6 @@ export const basketStore = createSlice({
   name: "basket",
   initialState: initialState,
   reducers: {
-    //TO DO action reset
     resetItem: (state) => {
       return { ...state, items: initialState.items };
     },
@@ -63,7 +62,7 @@ export const basketStore = createSlice({
           return value.name === action.payload.name;
         }).length
       ) {
-        var items = state.items.map((item) => item.name);
+        let items = state.items.map((item) => item.name);
         let index = items.indexOf(action.payload.name);
         state.items[index].countItem += 1;
         state.items[index].price += action.payload.price;

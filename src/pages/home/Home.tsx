@@ -4,6 +4,8 @@ import ProductBox from "../../components/product-box/ProductBox";
 import { addItem, delItem, resetItem } from "../../store/basketStore";
 import { rootType } from "../../store/rootReducer";
 import { store } from "../../store/store";
+import { Translation } from "react-i18next";
+// import { withTranslation } from "react-i18next";
 
 import style from "./Home.module.css";
 function Home() {
@@ -95,7 +97,7 @@ function Home() {
           src="https://img.cppng.com/download/2020-06/58726-juice-apple-cartoon-png-free-photo.png"
           alt=""
         />
-        Fruits Market
+        <Translation>{(t) => <>{t("Fruits Market")}</>}</Translation>
       </div>
 
       <div className={style.container}>
