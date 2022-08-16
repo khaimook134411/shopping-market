@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./ProductBox.module.css";
+import { useTranslation } from "react-i18next";
 
 interface ProductBoxProp {
   imgUrl: string;
@@ -10,6 +11,8 @@ interface ProductBoxProp {
 }
 function ProductBox(props: ProductBoxProp) {
   const { name, price } = props;
+  const { t, i18n } = useTranslation();
+  // const quantity = 1;
   // const name = props.name;
   // const price = props.price;
 
@@ -30,7 +33,7 @@ function ProductBox(props: ProductBoxProp) {
           props.action(name, price);
         }}
       >
-        Add to basket +
+        {t("Add to basket")} +
       </div>
     </>
   );

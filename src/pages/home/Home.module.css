@@ -8,10 +8,22 @@
   align-items: center;
   font-size: large;
   font-weight: 500;
+  justify-content: space-between;
 }
 
 .header img {
   width: 10vw;
+}
+
+.boxImg {
+  display: flex;
+  align-items: center;
+}
+
+.translation {
+  display: flex;
+  gap: 1vw;
+  padding-right: 3vw;
 }
 
 .container {
@@ -60,6 +72,7 @@
   display: grid;
   grid-template-columns: 4fr 1fr 1fr 1fr 4fr;
   text-align: left;
+  align-items: baseline;
   margin: 2vw 0;
 }
 
@@ -91,7 +104,7 @@
 
 .resetConianer {
   display: flex;
-  align-items: center;
+  align-items: end;
   gap: 2px;
   position: absolute;
   bottom: 30vw;
@@ -118,5 +131,6 @@
   border: 2px solid rgb(193, 102, 102);
   border-radius: 2px;
   display: flex;
+  align-items: baseline;
   justify-content: space-evenly;
 }
