@@ -85,6 +85,30 @@
   color: rgb(33, 77, 106);
 }
 
+/* .circle::before {
+  content: "reset";
+} */
+
+.resetConianer {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  position: absolute;
+  bottom: 30vw;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  border: 1px solid #fff;
+  background-color: rgb(255, 127, 133);
+}
+
+.circle:hover {
+  cursor: pointer;
+}
+
 .total {
   width: 20vw;
   position: absolute;

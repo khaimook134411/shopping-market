@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ProductBox from "../../components/product-box/ProductBox";
-import { addItem, delItem } from "../../store/basketStore";
+import { addItem, delItem, resetItem } from "../../store/basketStore";
 import { rootType } from "../../store/rootReducer";
 import { store } from "../../store/store";
 
@@ -87,7 +87,6 @@ function Home() {
   const state = useSelector((state: rootType) => {
     return state.basket;
   });
-  // console.log(store.getState().basket.items[1].countItem);
 
   return (
     <div>
@@ -101,7 +100,6 @@ function Home() {
 
       <div className={style.container}>
         <div className={style.containerProduct}>
-          {/* All products */}
           <div className={style.mapData}>{mapData}</div>
         </div>
         <div className={style.containerBasket}>
@@ -144,6 +142,16 @@ function Home() {
                 </div>
               );
             })}
+          </div>
+
+          <div className={style.resetConianer}>
+            <div>reset</div>
+            <div
+              className={style.circle}
+              onClick={() => {
+                store.dispatch(resetItem());
+              }}
+            ></div>
           </div>
 
           <div className={style.total}>

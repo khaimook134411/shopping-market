@@ -17,6 +17,9 @@ export const basketStore = createSlice({
   initialState: initialState,
   reducers: {
     //TO DO action reset
+    resetItem: (state) => {
+      return { ...state, items: initialState.items };
+    },
     delItem: (
       state,
       action: PayloadAction<{ name: string; price: number }>
@@ -80,4 +83,4 @@ export const basketStore = createSlice({
     },
   },
 });
-export const { delItem, addItem } = basketStore.actions;
+export const { delItem, addItem, resetItem } = basketStore.actions;
