@@ -2,7 +2,7 @@
   width: 100vw;
   height: fit-content;
   position: fixed;
-  z-index: 999;
+  z-index: 100;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -97,10 +97,6 @@
   text-align: center;
   color: rgb(33, 77, 106);
 }
-
-/* .circle::before {
-  content: "reset";
-} */
 
 .resetConianer {
   display: flex;

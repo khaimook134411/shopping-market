@@ -1,89 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProductBox from "../../components/product-box/ProductBox";
 import { addItem, delItem, resetItem } from "../../store/basketStore";
 import { rootType } from "../../store/rootReducer";
 import { store } from "../../store/store";
-
 import style from "./Home.module.css";
-// import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import getData, { DataType } from "./getData";
+import Loading from "../../components/loading/Loading";
 
-// export enum LangFilter {
-//   th = "th",
-//   en = "en",
-// }
 function Home() {
   let { lang } = useParams();
   const { t, i18n } = useTranslation();
 
   const handleChangeLang = (lang: string) => {
-    window.location.href = "/home/" + lang;
+    window.location.href = "/" + lang;
   };
+
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<DataType[]>([]);
   useEffect(() => {
+    getData().then((_data) => {
+      setData(_data);
+      setLoading(false);
+    });
     lang === "th" ? i18n.changeLanguage("th") : i18n.changeLanguage("en");
   }, [lang, i18n]);
-  const data = [
-    {
-      name: t("apple"),
-      imgUrl: "https://www.pngall.com/wp-content/uploads/11/Apple-PNG-File.png",
-      price: 33,
-    },
-    {
-      name: t("orange"),
-      imgUrl:
-        "https://cdn.pixabay.com/photo/2016/02/23/17/42/orange-1218158_1280.png",
-      price: 20,
-    },
-    {
-      name: t("banana"),
-      imgUrl: "https://www.pngmart.com/files/1/Banana-Bunch-PNG.png",
-      price: 10,
-    },
-    {
-      name: t("strawberry"),
-      imgUrl:
-        "https://i.pinimg.com/originals/28/3e/53/283e53880ea4fd483c4968d89b143866.png",
-      price: 100,
-    },
-    {
-      name: t("watermelon"),
-      imgUrl:
-        "https://www.pngall.com/wp-content/uploads/2016/04/Watermelon-Free-Download-PNG.png",
-      price: 80,
-    },
-    {
-      name: t("cherry"),
-      imgUrl:
-        "https://www.pngplay.com/wp-content/uploads/6/Aesthetic-Cherry-Transparent-PNG.png",
-      price: 80,
-    },
-    {
-      name: t("kiwi"),
-      imgUrl:
-        "https://www.pngall.com/wp-content/uploads/2016/04/Kiwi-PNG-File.png",
-      price: 80,
-    },
-    {
-      name: t("grape"),
-      imgUrl:
-        "https://www.padasopus.com/wp-content/uploads/2017/07/Grape-PNG.png",
-      price: 80,
-    },
-    {
-      name: t("pineapple"),
-      imgUrl:
-        "https://i.pinimg.com/originals/30/a3/f8/30a3f885fa5b26244d1f8819a94869b5.png",
-      price: 80,
-    },
-    {
-      name: t("blueberry"),
-      imgUrl:
-        "https://i.pinimg.com/originals/91/25/b2/9125b2471bb9514dd03f878f05ece4f4.png",
-      price: 80,
-    },
-  ];
+
   const _action = (name1: string, price: number) =>
     store.dispatch(addItem({ name: name1, price: price }));
 
@@ -107,6 +51,7 @@ function Home() {
 
   return (
     <div>
+      {loading && <Loading />}
       <div className={style.header}>
         <div className={style.boxImg}>
           <img
@@ -120,9 +65,7 @@ function Home() {
           <div onClick={() => handleChangeLang("en")}>EN</div>|
           <div onClick={() => handleChangeLang("th")}>TH</div>
         </div>
-        {/* <Translation>{(t) => <>{t("Fruits Market")}</>}</Translation> */}
       </div>
-
       <div className={style.container}>
         <div className={style.containerProduct}>
           <div className={style.mapData}>{mapData}</div>

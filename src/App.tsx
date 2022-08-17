@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import "./App.css";
+import CommonFeedback from "./components/hoc/CommonFeedback";
 import Home from "./pages/home/Home";
 import { persistedStore, store } from "./store/store";
 
@@ -11,12 +12,13 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistedStore}>
-          <Routes>
-            <Route path="/home/:lang" element={<Home />} />
-            {/* <Route path="me" element={...} /> */}
-
-            {/* <Route path="/:id" element={<Home />} /> */}
-          </Routes>
+          <CommonFeedback>
+            <div>
+              <Routes>
+                <Route path="/:lang" element={<Home />} />
+              </Routes>
+            </div>
+          </CommonFeedback>
         </PersistGate>
       </Provider>
     </div>
