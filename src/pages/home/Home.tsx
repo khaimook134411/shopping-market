@@ -28,19 +28,22 @@ function Home() {
     lang === "th" ? i18n.changeLanguage("th") : i18n.changeLanguage("en");
   }, [lang, i18n]);
 
-  const _action = (name1: string, price: number) =>
-    store.dispatch(addItem({ name: name1, price: price }));
+  // const _action = (name1: string, price: number) =>
+  //   store.dispatch(addItem({ name: name1, price: price }));
 
   const mapData = data.map((element, index) => {
     return (
       <div className={style.box}>
         <ProductBox
+          id={element.id}
           imgUrl={element.imgUrl}
           name={element.name}
           price={element.price}
           key={index}
           index={index}
-          action={_action}
+          action={(id: number, name: string, price: number) =>
+            store.dispatch(addItem({ id: id, name: name, price: price }))
+          }
         />
       </div>
     );
@@ -77,11 +80,12 @@ function Home() {
             {state.items.map((val, index) => {
               return (
                 <div className={style.dataList}>
-                  <div className={style.text}>{val.name}</div>
+                  <div className={style.text}>{t(val.name)}</div>
                   <button
                     onClick={() =>
                       store.dispatch(
                         delItem({
+                          id: val.id,
                           name: val.name,
                           price: val.price / val.countItem,
                         })
@@ -97,6 +101,7 @@ function Home() {
                     onClick={() =>
                       store.dispatch(
                         addItem({
+                          id: val.id,
                           name: val.name,
                           price: val.price / val.countItem,
                         })

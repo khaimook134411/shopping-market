@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 export interface Items {
+  id: number;
   name: string;
   price: number;
   countItem: number;
@@ -12,6 +12,7 @@ export type listItems = {
 const initialState: listItems = {
   items: [],
 };
+
 export const basketStore = createSlice({
   name: "basket",
   initialState: initialState,
@@ -21,19 +22,19 @@ export const basketStore = createSlice({
     },
     delItem: (
       state,
-      action: PayloadAction<{ name: string; price: number }>
+      action: PayloadAction<{ id: number; name: string; price: number }>
     ) => {
       if (
         state.items.filter((value) => {
-          return value.name === action.payload.name;
+          return value.id === action.payload.id;
         }).length
       ) {
-        var items = state.items.map((item) => item.name);
-        let index = items.indexOf(action.payload.name);
+        var items = state.items.map((item) => item.id);
+        let index = items.indexOf(action.payload.id);
 
         if (state.items[index].countItem === 1) {
           state.items = state.items.filter((item, index) => {
-            return item.name !== action.payload.name;
+            return item.id !== action.payload.id;
           });
         } else {
           state.items[index].countItem -= 1;
@@ -45,6 +46,7 @@ export const basketStore = createSlice({
           items: [
             ...state.items,
             {
+              id: action.payload.id,
               name: action.payload.name,
               price: action.payload.price,
               countItem: 1,
@@ -55,15 +57,15 @@ export const basketStore = createSlice({
     },
     addItem: (
       state,
-      action: PayloadAction<{ name: string; price: number }>
+      action: PayloadAction<{ id: number; name: string; price: number }>
     ) => {
       if (
         state.items.filter((value) => {
-          return value.name === action.payload.name;
+          return value.id === action.payload.id;
         }).length
       ) {
-        let items = state.items.map((item) => item.name);
-        let index = items.indexOf(action.payload.name);
+        let items = state.items.map((item) => item.id);
+        let index = items.indexOf(action.payload.id);
         state.items[index].countItem += 1;
         state.items[index].price += action.payload.price;
       } else {
@@ -72,6 +74,7 @@ export const basketStore = createSlice({
           items: [
             ...state.items,
             {
+              id: action.payload.id,
               name: action.payload.name,
               price: action.payload.price,
               countItem: 1,

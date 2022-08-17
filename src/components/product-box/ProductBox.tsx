@@ -3,14 +3,15 @@ import style from "./ProductBox.module.css";
 import { useTranslation } from "react-i18next";
 
 interface ProductBoxProp {
+  id: number;
   imgUrl: string;
   name: string;
   price: number;
   index: number;
-  action: (name: string, price: number) => void;
+  action: (id: number, name: string, price: number) => void;
 }
 function ProductBox(props: ProductBoxProp) {
-  const { name, price } = props;
+  const { id, name, price } = props;
   const { t } = useTranslation();
   // const quantity = 1;
   // const name = props.name;
@@ -23,14 +24,14 @@ function ProductBox(props: ProductBoxProp) {
           <img alt="" src={props.imgUrl} />
         </div>
         <div className={style.detail}>
-          <div>{props.name}</div>
+          <div>{t(props.name)}</div>
           <div className={style.price}>{props.price}</div>
         </div>
       </div>
       <div
         className={style.addButton}
         onClick={() => {
-          props.action(name, price);
+          props.action(id, name, price);
         }}
       >
         {t("Add to basket")} +
