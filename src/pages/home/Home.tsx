@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import ProductBox from "../../components/product-box/ProductBox";
 import { addItem, delItem, resetItem } from "../../store/basketStore";
@@ -8,10 +8,22 @@ import { store } from "../../store/store";
 import style from "./Home.module.css";
 // import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+
+// export enum LangFilter {
+//   th = "th",
+//   en = "en",
+// }
 function Home() {
-  // let { lang } = useParams();
+  let { lang } = useParams();
   const { t, i18n } = useTranslation();
-  // i18n.changeLanguage(lang);
+
+  const handleChangeLang = (lang: string) => {
+    window.location.href = "/home/" + lang;
+  };
+  useEffect(() => {
+    lang === "th" ? i18n.changeLanguage("th") : i18n.changeLanguage("en");
+  }, [lang, i18n]);
   const data = [
     {
       name: t("apple"),
@@ -104,7 +116,9 @@ function Home() {
           {t("Fruits Market")}
         </div>
         <div className={style.translation}>
-          <div>EN</div>|<div>TH</div>
+          {lang}
+          <div onClick={() => handleChangeLang("en")}>EN</div>|
+          <div onClick={() => handleChangeLang("th")}>TH</div>
         </div>
         {/* <Translation>{(t) => <>{t("Fruits Market")}</>}</Translation> */}
       </div>

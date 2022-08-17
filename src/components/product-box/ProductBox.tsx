@@ -11,7 +11,7 @@ interface ProductBoxProp {
 }
 function ProductBox(props: ProductBoxProp) {
   const { name, price } = props;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   // const quantity = 1;
   // const name = props.name;
   // const price = props.price;
