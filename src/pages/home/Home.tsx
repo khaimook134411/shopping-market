@@ -19,6 +19,8 @@ function Home() {
   };
 
   const [loading, setLoading] = useState(true);
+  // const [page, setPage] = useState(window.location.pathname);
+  const page = window.location.pathname;
   const [data, setData] = useState<DataType[]>([]);
   useEffect(() => {
     getData().then((_data) => {
@@ -64,9 +66,19 @@ function Home() {
           {t("Fruits Market")}
         </div>
         <div className={style.translation}>
-          {lang}
-          <div onClick={() => handleChangeLang("en")}>EN</div>|
-          <div onClick={() => handleChangeLang("th")}>TH</div>
+          <div
+            className={page === "/en" ? style.langActive : style.lang}
+            onClick={() => handleChangeLang("en")}
+          >
+            EN
+          </div>
+          |
+          <div
+            className={page === "/th" ? style.langActive : style.lang}
+            onClick={() => handleChangeLang("th")}
+          >
+            TH
+          </div>
         </div>
       </div>
       <div className={style.container}>
@@ -76,7 +88,7 @@ function Home() {
         <div className={style.containerBasket}>
           <div className={style.basketList}>{t("Basket List")}</div>
 
-          <div>
+          <div className={style.containerDataList}>
             {state.items.map((val, index) => {
               return (
                 <div className={style.dataList}>

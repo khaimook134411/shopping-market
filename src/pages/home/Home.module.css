@@ -26,6 +26,16 @@
   padding-right: 3vw;
 }
 
+.lang:hover {
+  cursor: pointer;
+}
+
+.langActive {
+  background-color: #000;
+  color: #fff;
+  border-radius: 2px;
+}
+
 .container {
   display: flex;
   padding-top: 8vw;
@@ -55,6 +65,10 @@
 .basketList {
   padding: 3vw 0 2vw 0;
   color: rgb(193, 102, 102);
+}
+
+.containerDataList {
+  width: 100%;
 }
 
 .mapData {
@@ -89,7 +103,7 @@
 }
 
 .text {
-  padding-left: 1vw;
+  padding-left: 2vw;
   color: gray;
 }
 
