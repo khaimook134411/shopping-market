@@ -15,7 +15,9 @@ function App() {
           <CommonFeedback>
             <div>
               <Routes>
-                <Route path="/:lang" element={<Home />} />
+                <Route path="/">
+                  <Route path=":lang" element={<Home />} />
+                </Route>
               </Routes>
             </div>
           </CommonFeedback>

@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import getData, { DataType } from "./getData";
 import Loading from "../../components/loading/Loading";
+// import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 function Home() {
   let { lang } = useParams();
@@ -19,7 +20,6 @@ function Home() {
   };
 
   const [loading, setLoading] = useState(true);
-  // const [page, setPage] = useState(window.location.pathname);
   const page = window.location.pathname;
   const [data, setData] = useState<DataType[]>([]);
   useEffect(() => {
@@ -133,6 +133,7 @@ function Home() {
 
           <div className={style.resetConianer}>
             <div>{t("Reset")}</div>
+            {/* <DeleteOutlineIcon /> */}
             <div
               className={style.circle}
               onClick={() => {
